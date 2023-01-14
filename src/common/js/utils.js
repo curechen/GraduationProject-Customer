@@ -4308,7 +4308,9 @@ export const prefix = (url) => {
   if (url && url.startsWith('http')) {
     return url
   } else {
-    url = `http://backend-api-01.newbee.ltd${url}`
+    // http://backend-api-01.newbee.ltd${url}
+    url = `http://42.193.99.39:8092${url}`
+    console.log('urlllll:' + url)
     return url
   }
 }
