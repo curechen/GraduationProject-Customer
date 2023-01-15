@@ -12,6 +12,7 @@
   <div class="cart-box">
     <s-header :name="'购物车'" :noback="true"></s-header>
     <div class="cart-body">
+      <!-- 多选框的选定是根据 name 来决定的，逻辑里是默认全选 -->
       <van-checkbox-group @change="groupChange" v-model="result" ref="checkboxGroup">
         <van-swipe-cell :right-width="50" v-for="(item, index) in list" :key="index">
           <div class="good-item">
@@ -85,9 +86,11 @@ export default {
     const store = useStore()
     const state = reactive({
       checked: false,
+      // 展示的商品列表
       list: [],
-      all: false,
+      // 选中的商品列表
       result: [],
+      all: false,
       checkAll: true
     })
 
@@ -98,8 +101,11 @@ export default {
     const init = async () => {
       Toast.loading({ message: '加载中...', forbidClick: true });
       const { data } = await getCart({ pageNumber: 1 })
-      state.list = data
-      state.result = data.map(item => item.cartItemId)
+      // 兜底，因为后端返回的数据可能为 null
+      if (Array.isArray(data)) {
+        state.list = data
+        state.result = data.map(item => item.cartItemId)
+      }
       Toast.clear()
     }
 
@@ -160,12 +166,12 @@ export default {
     }
 
     const groupChange = (result) => {
-      console.log(1)
+      // console.log('哈哈哈' + result)
       if (result.length == state.list.length) {
-        console.log(2)
+        // console.log(2)
         state.checkAll = true
       } else {
-        console.log(3)
+        // console.log(3)
         state.checkAll = false
       }
       state.result = result
