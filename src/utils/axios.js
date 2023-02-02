@@ -2,7 +2,7 @@
  * @Author: curechen 981470148@qq.com
  * @Date: 2023-01-07 18:05:51
  * @LastEditors: curechen 981470148@qq.com
- * @LastEditTime: 2023-01-14 21:43:21
+ * @LastEditTime: 2023-02-02 21:00:26
  * @FilePath: \GraduationProject\local-life-mall\src\utils\axios.js
  * @Description: 
  */
@@ -32,6 +32,7 @@ axios.interceptors.response.use(res => {
   }
   if (res.data.resultCode != 200) {
     if (res.data.message) Toast.fail(res.data.message)
+    // 未登录的兜底，直接跳转登录页
     if (res.data.resultCode == 416) {
       router.push({ path: '/login' })
     }

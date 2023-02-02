@@ -1,5 +1,46 @@
+/*
+ * @Author: curechen 981470148@qq.com
+ * @Date: 2023-01-08 10:21:11
+ * @LastEditors: curechen 981470148@qq.com
+ * @LastEditTime: 2023-01-15 14:14:26
+ * @FilePath: \GraduationProject\local-life-mall\src\main.js
+ * @Description: 
+ */
 import { createApp } from 'vue'
-import { ActionBar, ActionBarIcon, ActionBarButton, Divider, Popup, Overlay, Loading, Dialog, ContactCard, Form, AddressEdit, AddressList, Field, CellGroup, Cell, SwipeCell, Icon, Stepper, Card, Checkbox, CheckboxGroup, Button, Swipe, SwipeItem, PullRefresh, List, Tab, Tabs, SubmitBar, Toast, Skeleton } from 'vant'
+import {
+  ActionBar,
+  ActionBarIcon,
+  ActionBarButton,
+  Divider,
+  Popup,
+  Overlay,
+  Loading,
+  Dialog,
+  ContactCard,
+  Form,
+  AddressEdit,
+  AddressList,
+  Field,
+  CellGroup,
+  Cell,
+  SwipeCell,
+  Icon,
+  Stepper,
+  Card,
+  Checkbox,
+  CheckboxGroup,
+  Button,
+  Swipe,
+  SwipeItem,
+  PullRefresh,
+  List,
+  Tab,
+  Tabs,
+  SubmitBar,
+  Toast,
+  Skeleton,
+  Popover
+} from 'vant'
 import App from './App.vue'
 import store from './store'
 import router from './router'
@@ -51,6 +92,7 @@ app.use(ActionBarButton)
   .use(Checkbox)
   .use(CheckboxGroup)
   .use(Skeleton)
+  .use(Popover)
 
 app.use(router)
 app.use(store)
