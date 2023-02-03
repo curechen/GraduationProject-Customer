@@ -1,4 +1,12 @@
 <!--
+ * @Author: curechen 981470148@qq.com
+ * @Date: 2023-01-08 10:21:11
+ * @LastEditors: curechen 981470148@qq.com
+ * @LastEditTime: 2023-02-03 11:06:12
+ * @FilePath: \GraduationProject\local-life-mall\src\views\Setting.vue
+ * @Description: 
+-->
+<!--
  * 严肃声明：
  * 开源版本请务必保留此注释头信息，若删除我方将保留所有法律责任追究！
  * 本系统已申请软件著作权，受国家版权局知识产权以及国家计算机软件著作权保护！
@@ -23,6 +31,7 @@
 
 <script>
 import { reactive, onMounted, toRefs } from 'vue'
+import { useRouter } from "vue-router"
 import md5 from 'js-md5'
 import sHeader from '@/components/SimpleHeader'
 import { getUserInfo, EditUserInfo, logout } from '@/service/user'
@@ -33,6 +42,7 @@ export default {
     sHeader
   },
   setup() {
+    const router = useRouter()
     const state = reactive({
       nickName: '',
       introduceSign: '',
@@ -61,7 +71,8 @@ export default {
       const { resultCode } = await logout()
       if (resultCode == 200) {
         setLocal('token', '')
-        window.location.href = '/home'
+        // window.location.href = '/home'
+        router.push({ path: '/home' })
       }
     }
 

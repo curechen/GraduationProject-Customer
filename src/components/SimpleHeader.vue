@@ -2,7 +2,7 @@
  * @Author: curechen 981470148@qq.com
  * @Date: 2023-01-08 10:21:11
  * @LastEditors: curechen 981470148@qq.com
- * @LastEditTime: 2023-02-02 22:15:48
+ * @LastEditTime: 2023-02-03 11:05:47
  * @FilePath: \GraduationProject\local-life-mall\src\components\SimpleHeader.vue
  * @Description: 
 -->
@@ -80,7 +80,8 @@ export default {
       const { resultCode } = await logout()
       if (resultCode == 200) {
         setLocal('token', '')
-        window.location.href = '/home'
+        // window.location.href = '/#/home'
+        router.push({ path: '/home' })
       }
     }
 
