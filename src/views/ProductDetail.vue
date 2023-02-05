@@ -14,6 +14,7 @@
     <div class="detail-content">
       <div class="detail-swipe-wrap">
         <van-swipe class="my-swipe" indicator-color="#cd1625">
+          <!-- v-for="(item, index) in detail.goodsCarouselList" -->
           <van-swipe-item
             v-for="(item, index) in detail.goodsCarouselList"
             :key="index"
@@ -71,7 +72,7 @@ import { getDetail } from "@/service/good"
 import { addCart } from "@/service/cart"
 import sHeader from "@/components/SimpleHeader"
 import { Toast } from "vant"
-import { prefix } from "@/common/js/utils"
+// import { prefix } from "@/common/js/utils"
 export default {
   setup() {
     const route = useRoute()
@@ -87,7 +88,8 @@ export default {
     onMounted(async () => {
       const { id } = route.params
       const { data } = await getDetail(id)
-      data.goodsCarouselList = data.goodsCarouselList.map((i) => prefix(i))
+      // data.goodsCarouselList = data.goodsCarouselList.map((i) => prefix(i))
+      data.goodsCarouselList = new Array(data.goodsCoverImg)
       state.detail = data
       store.dispatch("updateCart")
     })
