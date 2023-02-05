@@ -42,7 +42,7 @@
         <van-list
           v-model:loading="loading"
           :finished="finished"
-          :finished-text="productList.length ? '没有更多了' : '搜索想要的商品'"
+          :finished-text="finishedText"
           @load="onLoad"
           @offset="10"
         >
@@ -95,6 +95,7 @@ export default {
       totalPage: 0,
       page: 1,
       orderBy: "",
+      finishedText: '搜索想要的商品',
     })
 
     // onMounted(() => {
@@ -118,8 +119,9 @@ export default {
         keyword: state.keyword,
         orderBy: state.orderBy,
       })
-
-      state.productList = state.productList.concat(list)
+      // state.productList = state.productList.concat(list)
+      if (list !== null) state.productList = state.productList.concat(list)
+      state.finishedText = state.productList.length === 0 ? '没有相关商品' : '没有更多了'
       state.totalPage = data.totalPage
       state.loading = false
       if (state.page >= data.totalPage) state.finished = true
