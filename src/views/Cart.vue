@@ -105,6 +105,10 @@ export default {
       if (Array.isArray(data)) {
         state.list = data
         state.result = data.map(item => item.cartItemId)
+      } else {
+        // 返回数据为 null 时清空购物车
+        state.list = []
+        state.result = []
       }
       Toast.clear()
     }
